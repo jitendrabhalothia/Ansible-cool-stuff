@@ -1,0 +1,8 @@
+---
+- name: Deploy | Playbook to check the log quality
+  hosts: Demo
+  become: true
+  tasks:
+    - command: tail -1000 /opt/demo/log/production.log
+      register: command_output
+      failed_when: "'TenantTimeZone' in command_output.stdout"
