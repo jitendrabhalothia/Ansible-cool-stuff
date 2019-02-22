@@ -1,0 +1,11 @@
+import os
+env_list=["env1","env2","env3"]
+command_list =[]
+
+for each in env_list:
+	command = 'ansible-playbook -i inventory/prod/{0}  playbook.yml -e target={0}'.format(each)
+	print command
+	command_list.append(command)
+
+for i in command_list:
+    os.system(i)
